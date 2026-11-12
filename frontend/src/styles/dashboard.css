@@ -1,0 +1,332 @@
+.dashboard-page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.dashboard-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.dashboard-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.dashboard-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 580px;
+}
+
+/* Quick Search Bar */
+.dashboard-search-section {
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.search-form-wrapper {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-full);
+  padding: 6px 8px 6px 20px;
+  transition: all var(--transition-normal);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.search-form-wrapper:focus-within {
+  border-color: var(--accent-purple);
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.25);
+}
+
+.search-icon-inline {
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  margin-right: 12px;
+}
+
+.search-input-inline {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.search-input-inline::placeholder {
+  color: var(--text-muted);
+}
+
+.search-btn-inline {
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+}
+
+/* Recording Workstation */
+.recording-workstation {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: 48px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.recording-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.recording-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.recording-desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  max-width: 460px;
+}
+
+/* Mic Button & Ripple Animation */
+.mic-container {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.mic-btn {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  color: #ffffff;
+  box-shadow: 0 0 35px var(--accent-glow);
+  transition: all var(--transition-normal);
+  z-index: 2;
+}
+
+.mic-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 50px rgba(139, 92, 246, 0.6);
+}
+
+.mic-btn.recording {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  box-shadow: 0 0 40px rgba(239, 68, 68, 0.6);
+  animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse-red {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 24px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+.recording-pulse-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--danger);
+  animation: ripple 1.8s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* Visualizer bars */
+.audio-visualizer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+}
+
+.visualizer-bar {
+  width: 4px;
+  background: var(--accent-purple);
+  border-radius: var(--radius-full);
+  animation: equalize 1s ease-in-out infinite alternate;
+}
+
+@keyframes equalize {
+  0% {
+    height: 6px;
+  }
+  100% {
+    height: 32px;
+  }
+}
+
+.recording-timer {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: #ffffff;
+}
+
+.recording-progress-bar {
+  width: 240px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.recording-progress-fill {
+  height: 100%;
+  background: var(--danger);
+  transition: width 0.3s linear;
+}
+
+/* Audio Preview Section */
+.audio-preview-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.preview-audio-player {
+  width: 100%;
+  height: 40px;
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.recorder-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Recognized result section */
+.result-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.result-heading {
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Audio File Upload Alternative */
+.upload-divider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 320px;
+  margin: 16px 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.upload-divider::before,
+.upload-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-glass);
+}
+
+.upload-divider span {
+  padding: 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.upload-file-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px dashed var(--border-glass-hover);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all var(--transition-normal);
+}
+
+.upload-file-btn:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: var(--accent-purple);
+  transform: translateY(-2px);
+}
+
+.audio-file-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  color: #c4b5fd;
+  font-weight: 600;
+}
